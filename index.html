@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+
+<!-- This is the meta data for SEO. 'title' appears in the browser tab --> 
+
+
+	<meta name="description" content="Goldsmiths MA Digital Sociology Sandbox" />
+    <meta name="author" content="Jake Strickland" />
+    <meta name="keywords" content="MA Digital Sociology Sandbox Twitter Scrape">    	
+	<link href="style.css" rel="stylesheet" />
+    <title> Jakes Scrape</title>
+    
+<!-- The 'Wrap' id centres the content on the page--> 
+
+<div id="wrap">	
+
+<!-- Any icons used for 'share' buttons must be stored in the 'image' folder and located in the same directory as the index.html file --> 
+	
+<ul class="share-buttons">
+	<li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Figor.gold.ac.uk%2F~so301js%2F&t=Jakes%20Scrape" target="_blank"><img src="images/flat_web_icon_set/black/Facebook.png"></a></li>
+	<li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Figor.gold.ac.uk%2F~so301js%2F&text=Jakes%20Scrape:%20http%3A%2F%2Figor.gold.ac.uk%2F~so301js%2F" target="_blank" title="Tweet"><img src="images/flat_web_icon_set/black/Twitter.png"></a></li>
+	<li><a href="https://plus.google.com/share?url=http%3A%2F%2Figor.gold.ac.uk%2F~so301js%2F" target="_blank" title="Share on Google+"><img src="images/flat_web_icon_set/black/Google+.png"></a></li>
+	<li><a href="mailto:?subject=Jakes%20Scrape&body=:%20http%3A%2F%2Figor.gold.ac.uk%2F~so301js%2F" target="_blank" title="Email"><img src="images/flat_web_icon_set/black/Email.png"></a></li>
+</ul>
+
+<!-- The jquery file must also be in the same directory as index.html. The code will change the menu layout to suit screen size--> 
+
+	<meta charset='utf-8'>
+   	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+   	<meta name="viewport" content="width=device-width, initial-scale=1">
+   	<link rel="stylesheet" href="styles.css">
+   	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+   	<script src="script.js"></script>
+   	<title>CSS MenuMaker</title>
+
+</head>
+
+<style>
+
+body {
+        background-image: url("images/bg.png");
+} 
+
+
+</style>
+
+
+
+<body>
+
+
+
+<!-- This is the link URL and title informaiton for the top navigation menu. 
+Remember to use: target='_blank' to make sure clicking on the link opens in a new page or tab. --> 
+
+<div id='cssmenu'>
+<ul>
+   <li class='active'><a href='http://igor.gold.ac.uk/~so301js/digitaltwit/' target='_blank'>MADS Blog</a></li>
+   <li class='active'><a href='www.jakestrickland.co.uk' target='_blank'>About</a></li>
+   <li class='active'><a href='https://github.com/BlueLegs/Twitter-Scrape' target='_blank'>Gist</a></li>
+   <li class='active'><a href='http://www.gold.ac.uk/' target='_blank'>Goldsmiths</a></li>
+</ul>
+</div>
+
+<!-- Heading and subtitle for top of page--> 
+
+	<hr>
+	<h1> #NorthKorea Twitter Scrape </h1>
+	<h2>Project page for MADS Sandbox</h2>
+	
+<!-- First paragraph--> 	
+	<p>
+	
+	The chart below represents a Twitter Scrape of the hash tag #NorthLKorea. 
+	The Python script ran just after the film <a href="http://www.theinterview-movie.com/" target="_blank">'The Interview'</a> was finally released online and later in some cinemas. 
+	The film was pulled from its original theatre debut due to threats from North Korea as the satirical 
+	portrayal of Kim Jong Un, the North Korean leader, was deemed unacceptable. A group called 'Guardians of Peace', who the FBI believe have ties to North Korea, allegedly 'hacked' Sony Pictures. 
+	The group demanded that Sony Pictures pull The Interview which it referred to as "the movie of terrorism".   
+
+<br>
+<br>
+	
+	</p>
+	
+<!-- Code for linked chart--> 
+
+	<div id="chart_div"></div>
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+    google.load('visualization', '1.0', { packages: ['corechart']
+    });
+
+    google.setOnLoadCallback(getData);
+
+    function getData() {
+
+        var key = "19Wb4L-8QYYUsdUC0bw0PCraHXWDR8uKaKanrGmnuRDU/edit#gid=0";
+
+        var range = "A1:B25";
+
+        var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/' + key + '&usp=sharing&range=' + range);
+
+        query.send(drawChart);
+    }
+
+
+    function drawChart(response) {
+
+
+        if (response.isError()) {
+            console.log('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+            return;
+        }
+
+
+        var data = response.getDataTable();
+
+
+        var options = {
+			title:'Tweet Volume By Hour - Thursday 25th Dec 2014',
+        	padding: 20,
+        	hAxis: {
+         	title: 'Time'
+        },
+        	vAxis: {
+          	title: 'Number of Tweets'
+        },
+        
+        	colors: ['#FF0000', '#097138'],
+        	series: { 0: {
+            lineWidth: 5,
+            lineDashStyle: [5, 1, 5]
+          },
+         
+        }
+      };
+
+
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+    }
+    
+  
+       </script>
+<br>
+<br>       
+       
+
+    
+    <h2> Scraping </h2>
+    
+    <p>
+    
+    Using a Python script which included the <a href="https://code.google.com/p/python-twitter/" target="_blank">'Twitter-Scrape API'</a> 
+    allowed me to gather tweet data for as long as the script ran. Although the option to use Goldsmiths igor server was available 
+    I decided to try and run the scrape from my studio. Installing <a href="http://www.ubuntu.com/" target="_blank">'Ubuntu'</a> 
+    via a virtual machine was first route but this proved too problematic. Although I could install Ubuntu using both 
+    'Virtual Box' and 'VMWare Fusion', neither of them would render the GUI properly. 
+    
+    <br>
+    <br>
+    
+    Repurposing an old PC, I installed Ubuntu, installed the required modules using terminal, and I was up and running. (
+    And have since repurposed an old laptop, Ubuntu flies along, sod Windows!) The scrape run successfully on the most part. 
+    Every now and then the code broke due to a fault with the argument 'User'. Although I used 'UFT-8' to read the username regardless
+    of possible syntax errors this didn't seem to stop the problem. I ran the code on several occasions and gathered a healthy
+    amount of data but I'm going to have to dig deeper into this problem to use the code again. 
+    
+    <br>
+    <br>
+    
+    <h2> Managing The Data </h2>
+    
+    <p>
+    
+    The Python code created and wrote to a CSV as it scraped, so the work began with choosing a suitable range and pivoting the sheet.
+    Representing 24 hours is easy as the numerical range is logical (00:00 - 23:00). Copying the results into a Google Spreadsheet
+    and linking it using Google's visualisation code produces a live graph. Adding in some additional variables allowed me to change
+    the line style, add some titles and a border. This was a simple implementation of the code, I can see how I'll need to know a lot
+    more about this method when using much bigger data sets. 
+    
+    <br>
+    <br>
+    
+    <h2> Building The Webpage </h2>
+    
+    <p>
+    
+    Using HTML to create the basic content was, well, basic! But styling the page proved a little harder. I now understand the value of 
+    a style.css document. As with Paragraph Styles in word processing, a 'Cascading Style Sheet' will allow the site designer to allocate design 
+    decisions across the entire site. Understanding how to build the page with this in mind is imperative. I got a little lost with the various tags, 
+    such as understanding where 'style' and 'body' should start and stop. 
+    
+    <br>
+    
+    At time of writing I couldn't get the page to be centred and responsive, but there's still time!     
+
+	<br>
+	<br>       
+	<br>
+
+
+    </p>
+
+
+	<hr>
+    
+    
+<footer>
+  Site created by: Jake Strickland. Contact information: <a href="mailto: so301js@gold.ac.uk">so301js@gold.ac.uk</a>
+</footer>
+	
+	
+	
+	
+	
+</body>
+</html>
